@@ -1,0 +1,16 @@
+ARCHITECTURE ?= x86
+DISTRIBUTION ?= ubuntu
+
+x86_ARCHITECTURE_FLAGS = -x86
+arm_ARCHITECTURE_FLAGS = -aarch
+_ARCHITECTURE_FLAGS    = $(error No Architecture Specified)
+
+ubuntu_DISTRIBUTION_FLAGS = -ubuntu
+centos_DISTRIBUTION_FLAGS = -centos
+_DISTRIBUTION_FLAGS       = $(error No Distribution Specified)
+
+PLATFORM_FLAGS := $($(ARCHITECTURE)_ARCHITECTURE_FLAGS) $($(DISTRIBUTION)_DISTRIBUTION_FLAGS)
+
+.PHONY: all
+all:
+	@echo Flags are $(PLATFORM_FLAGS)
